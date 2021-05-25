@@ -1,0 +1,21 @@
+<launch>
+	<!-- For find_object node use calling service -->
+	<!-- <arg name="image_topic" default="/to_mmdetector" /> -->
+	<!-- For find_object node use subscribing -->
+	<arg name="image_topic" default="/xtion/rgb/image_raw" />
+
+	<arg name="mmdet_pub_rate" default="1" />
+	<arg name="is_service" default="false" />
+	<arg name="visualization" default="true" />
+
+	<node pkg= "mmdetection_ros" name="mmdetector" type="mmdetector.py"  output="screen"> 
+    	<remap from="~image" to="$(arg image_topic)"/>
+		<param name="~publish_rate" value="$(arg mmdet_pub_rate)" />
+		<param name="~is_service" value="$(arg is_service)" />
+		<param name="~visualization" value="$(arg visualization)" />
+	</node>
+
+	<node pkg="image_view" type="image_view" name="image_view">
+		<remap from="image" to="/mmdetector/debug_image"/>
+	</node>
+</launch>
