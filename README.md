@@ -1,4 +1,4 @@
-# mmdetection_ros
+# mmdetection-ros
 This is a ROS package for 2D object detection, which simply utilizes the toolbox [MMDetection](https://github.com/open-mmlab/mmdetection) of [OpenMMLab](https://openmmlab.com/).
 
 ### Requirements
